@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  music-bot:
+    depends_on:
+      - music-db
+    build:
+      context: .
+    image: ruthlessly23/music-bot
+    restart: always
+    environment:
+      BOT_NAME: 'Good_music_taste_bot'
+      BOT_TOKEN: '5782512465:AAEoRUKU94W1XxzvK18r71lI6EvSfwYiUBo'
+      BOT_DB_USERNAME: 'music_db_user'
+      BOT_DB_PASSWORD: 'YPHYkpdm?'
+    networks:
+      - postgres
+
+  music-db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: 'music_db_user'
+      POSTGRES_PASSWORD: 'YPHYkpdm?'
+      POSTGRES_DB: 'music_dbd'
+    ports:
+      - '5432:5432'
+    networks:
+      - postgres
+
+networks:
+  postgres:
+    driver: bridge

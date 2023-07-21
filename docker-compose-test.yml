@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  music-db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: 'music_db_user'
+      POSTGRES_PASSWORD: 'YPHYkpdm?'
+      POSTGRES_DB: 'music_dbd'
+    ports:
+      - '5432:5432'
